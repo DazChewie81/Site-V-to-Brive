@@ -1,3 +1,22 @@
+<?php
+    require("config.php");
+    if (isset($_POST['message'])){
+        if(!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['tel']) && !empty($_POST['message'])){
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $tel = $_POST['tel'];
+            $message = $_POST['message'];
+            $sql = $db->prepare("INSERT INTO contact_form(name, email, tel, message) VALUES(:name, :email, :tel, :message)");
+            $sql->execute([":name" => $name ,":email" => $email, ":tel" => $tel, ":message" => $message]);
+            echo "<script> alert('Votre message a été envoyé merci.') </script>";
+            if(!$sql){
+                echo "<script> alert('Erreur lors de l'envoi du message.') </script>";
+            }
+        }else{
+            echo "<script> alert('Veuillez remplir tous les champs.') </script>";
+        }
+    }
+?>
 <!DOCTYPE html>
 <html>
 
@@ -23,16 +42,16 @@
                 <div class="intro-lead-in" style="height: 57px;margin: 16px;"><span style="height: NaNpx;">Bienvenue sur le site&nbsp;</span></div><span style="font-size: 35px;height: NaNpx;"><em>des</em></span><span style="font-size: 48px;height: NaNpx;"><br>Vétérinaires de Brive-la-Gaillarde !<br><br></span></div>
         </div>
         <nav class="navbar navbar-dark navbar-expand-xl fixed-top" id="mainNav" style="background: #568259;height: 77px;">
-            <div class="container"><img style="border-radius: 58px;height: 50px;width: 50px;background: url(&quot;assets/img/logo.png?h=3d38e577b53e6c4b396ee92d12eeb8ba&quot;);margin: -340px;"><a class="navbar-brand" href="index.html#page-top" style="height: 50px;width: 408px;margin: 363px;font-family: Montserrat, sans-serif;color: #fec503;">Les Vétérinaires de Brive-la-Gaillarde</a>
+            <div class="container"><img style="border-radius: 58px;height: 50px;width: 50px;background: url(&quot;assets/img/logo.png?h=3d38e577b53e6c4b396ee92d12eeb8ba&quot;);margin: -340px;"><a class="navbar-brand" href="index.php#page-top" style="height: 50px;width: 408px;margin: 363px;font-family: Montserrat, sans-serif;color: #fec503;">Les Vétérinaires de Brive-la-Gaillarde</a>
                 <button
                     data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" data-toogle="collapse" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="nav navbar-nav ml-auto text-uppercase" style="margin: -389px;width: 720px;background: rgba(255,0,0,0);height: 50px;padding: -13px;">
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html#about">A PROPOS</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php#about">A PROPOS</a></li>
                             <li class="nav-item"><a class="nav-link js-scroll-trigger" href="horaires.html">HORAIRES et tarifs</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html#plan">PLAN</a></li>
-                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html#contact">CONTACT</a></li>
-                            <li class="nav-item"><a class="nav-link" href="AccesPerso.html#form">ACCÈS PERSONNEL<br></a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php#plan">PLAN</a></li>
+                            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.php#contact">CONTACT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="AccesPerso.php#form">ACCÈS PERSONNEL<br></a></li>
                         </ul>
                     </div>
             </div>
@@ -86,15 +105,15 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <form id="contactForm" name="contactForm" novalidate="novalidate">
+                    <form action="#" method="post" id="contactForm" name="contactForm" novalidate="novalidate">
                         <div class="form-row">
                             <div class="col col-md-6">
-                                <div class="form-group"><input class="form-control" type="text" id="name" placeholder="Nom" required=""><small class="form-text text-danger flex-grow-1 help-block lead"></small></div>
-                                <div class="form-group"><input class="form-control" type="email" id="email" placeholder="Adresse e-mail" required=""><small class="form-text text-danger help-block lead"></small></div>
-                                <div class="form-group"><input class="form-control" type="tel" placeholder="Numéro de téléphone" required=""><small class="form-text text-danger help-block lead"></small></div>
+                                <div class="form-group"><input name="name" class="form-control" type="text" id="name" placeholder="Nom" required=""><small class="form-text text-danger flex-grow-1 help-block lead"></small></div>
+                                <div class="form-group"><input name="email" class="form-control" type="email" id="email" placeholder="Adresse e-mail" required=""><small class="form-text text-danger help-block lead"></small></div>
+                                <div class="form-group"><input name="tel" class="form-control" type="tel" placeholder="Numéro de téléphone" required=""><small class="form-text text-danger help-block lead"></small></div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group"><textarea class="form-control" id="message" placeholder="Votre message" required=""></textarea><small class="form-text text-danger help-block lead"></small></div>
+                                <div class="form-group"><textarea name="message" class="form-control" id="message" placeholder="Votre message" required=""></textarea><small class="form-text text-danger help-block lead"></small></div>
                             </div>
                             <div class="col">
                                 <div class="clearfix"></div>

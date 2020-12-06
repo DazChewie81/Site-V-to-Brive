@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Site Cabinet Veterinaire</title>
     <link rel="icon" type="image/png" sizes="128x128" href="assets/img/Docteur%20Michelline%20DUBOIS.png?h=1984bf406f1c5a61acab18e44351c9a5">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css?h=fd9a0e90061715edf244bacb378754db">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css?h=dae1c8a3af6f73b03103550b2899dbd9">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/styles.min.css?h=ab2d1eb0d8e707ab1d9c2a8d94851c0a">
+    <link rel="stylesheet" href="assets/css/styles.min.css?h=e4728855996b3b316e54ffc9bce9fb0f">
 </head>
 
 <body>
@@ -33,19 +33,30 @@
             </div>
         </nav>
     </header>
-    <!-- Start: Login Form Clean -->
-    <div class="login-clean" style="margin-top: 17px;">
-        <form method="post">
-            <h2 class="sr-only">Login Form<textarea class="form-control"></textarea></h2>
-            <div class="illustration"><img src="assets/img/dog_1f415.png?h=d815286833dd1c8086e689e961114ce8"><img src="assets/img/cat_1f408.png?h=b8f55d829e342e0e62c047db287785d9"></div>
-            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
-            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div>
-            <div class="form-group"><button class="btn btn-primary" type="button" style="background: rgb(244,206,71);margin-left: 21%;">S'enregistrer</button></div>
-        </form>
+    <!-- Start: Registration Form with Photo -->
+    <div class="register-photo">
+        <!-- Start: Form Container -->
+        <div class="text-capitalize form-container" style="padding-top: 9px;padding-right: 0px;">
+            <!-- Start: Image -->
+            <div class="image-holder" style="background: url(&quot;assets/img/OIP.jpeg?h=7788efb1f15dd3d43812987dacdc5df7&quot;) center / contain no-repeat, rgba(21,9,9,0);border-style: none;"></div>
+            <!-- End: Image -->
+            <form method="post">
+                <h2 class="text-center">Formulaire d'enregistrement des clients</h2>
+                <div class="form-group"><input class="form-control" type="text" id="name" placeholder="Nom"></div>
+                <div class="form-group"><input class="form-control" type="text" id="prenom" placeholder="Prénom"></div>
+                <div class="form-group"><input class="form-control" type="tel" placeholder="Numéro de téléphone" required=""></div>
+                <div class="form-group"><input class="form-control" type="text" id="adresse" placeholder="Adresse"><input class="form-control" type="text" id="complement-adresse" placeholder="Complément d'adresse"><input class="form-control" type="text" id="codePostal" placeholder="Code postal">
+                    <input
+                        class="form-control" type="text" id="Ville" placeholder="Ville"></div>
+                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+                <div class="form-group"><input class="form-control" type="text" id="animaux" placeholder="Animaux pris en charge"></div>
+                <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Enregistrer</button></div>
+            </form>
+        </div>
+        <!-- End: Form Container -->
     </div>
-    <!-- End: Login Form Clean -->
-    <footer style="margin-left: center;height: 180px;width: center;margin-top: 17px;">
+    <!-- End: Registration Form with Photo -->
+    <footer style="margin-top: 42px;width: 1908px;padding-top: -12px;padding-bottom: 17px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-4"><span class="copyright">Copyright&nbsp;© Marius Info 2020</span></div>
