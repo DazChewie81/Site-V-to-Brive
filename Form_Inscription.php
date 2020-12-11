@@ -1,3 +1,33 @@
+<?php
+    require('config.php');
+
+    if (isset($_POST['nom'])){
+        if(!empty($_POST['nom']) && !empty($_POST['prenom']) && !empty($_POST['tel']) && !empty($_POST['adresse']) && !empty($_POST['complement']) && !empty($_POST['cp']) && !empty($_POST['ville']) && !empty($_POST['email']) && !empty($_POST['animaux'])){
+            $nom = $_POST['nom'];
+            $prenom = $_POST['prenom'];
+            $tel = $_POST['tel'];
+            $adresse = $_POST['adresse'];
+            $complement = $_POST['complement'];
+            $cp = $_POST['cp'];
+            $ville = $_POST['ville'];
+            $email = $_POST['email'];
+            $animaux = $_POST['animaux'];
+
+            //Insertion
+            $sql = $db->prepare("INSERT INTO client(nom, prenom, tel, adresse, complement, cp, ville, email, animaux) VALUES(:nom, :prenom, :tel, :adresse, :complement, :cp, :ville, :email, :animaux)");
+            $sql->execute([":nom" => $nom, ":prenom" => $prenom, ":tel" => $tel, ":adresse" => $adresse, ":complement" => $complement, ":cp" => $cp, ":ville" => $ville, ":email" => $email, ":animaux" => $animaux]);
+            if($sql){
+                echo "<script> alert('Inscription réussie'); </script>";
+            }
+
+            if(!$sql){
+                echo "<script> alert('Erreur lors de l'inscription'); </script>";
+            }
+        }else{
+            echo "<script> alert('Veuillez remplir tous les champs'); </script>";
+        }
+    }
+?>
 <!DOCTYPE html>
 <html>
 
@@ -15,7 +45,7 @@
     <link rel="stylesheet" href="assets/css/styles.min.css?h=e4728855996b3b316e54ffc9bce9fb0f">
 </head>
 
-<body>
+<body class="mt-4">
     <header style="width: center;height: center;margin: center;margin-top: center;margin-right: center;margin-bottom: center;margin-left: center;padding: center;padding-top: center;padding-right: center;padding-bottom: center;padding-left: center;min-width: center;max-width: center;min-height: center;">
         <nav class="navbar navbar-dark navbar-expand-xl fixed-top" id="mainNav" style="background: #568259;height: 77px;">
             <div class="container"><img style="border-radius: 58px;height: 50px;width: 50px;background: url(&quot;assets/img/logo.png?h=3d38e577b53e6c4b396ee92d12eeb8ba&quot;);margin: -340px;"><a class="navbar-brand" href="index.html#page-top" style="height: 50px;width: 408px;margin: 363px;font-family: Montserrat, sans-serif;color: #fec503;">Les Vétérinaires de Brive-la-Gaillarde</a>
@@ -40,16 +70,15 @@
             <!-- Start: Image -->
             <div class="image-holder" style="background: url(&quot;assets/img/OIP.jpeg?h=7788efb1f15dd3d43812987dacdc5df7&quot;) center / contain no-repeat, rgba(21,9,9,0);border-style: none;"></div>
             <!-- End: Image -->
-            <form method="post">
+            <form method="post" action="">
                 <h2 class="text-center">Formulaire d'enregistrement des clients</h2>
-                <div class="form-group"><input class="form-control" type="text" id="name" placeholder="Nom"></div>
-                <div class="form-group"><input class="form-control" type="text" id="prenom" placeholder="Prénom"></div>
-                <div class="form-group"><input class="form-control" type="tel" placeholder="Numéro de téléphone" required=""></div>
-                <div class="form-group"><input class="form-control" type="text" id="adresse" placeholder="Adresse"><input class="form-control" type="text" id="complement-adresse" placeholder="Complément d'adresse"><input class="form-control" type="text" id="codePostal" placeholder="Code postal">
-                    <input
-                        class="form-control" type="text" id="Ville" placeholder="Ville"></div>
-                <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
-                <div class="form-group"><input class="form-control" type="text" id="animaux" placeholder="Animaux pris en charge"></div>
+                <div class="form-group"><input class="form-control" type="text" id="nom" name="nom" placeholder="Nom"></div>
+                <div class="form-group"><input class="form-control" type="text" id="prenom" name="prenom" placeholder="Prénom"></div>
+                <div class="form-group"><input class="form-control" type="tel" id="tel" name="tel" placeholder="Numéro de téléphone" required=""></div>
+                <div class="form-group"><input class="form-control" type="text" id="adresse" name="adresse" placeholder="Adresse"><input class="form-control" type="text" id="complement" name="complement" placeholder="Complément d'adresse"><input class="form-control" type="text" id="cp" name="cp" placeholder="Code postal">
+                    <input class="form-control" type="text" id="ville" name="ville" placeholder="Ville"></div>
+                <div class="form-group"><input class="form-control" type="email" id="email" name="email" placeholder="Email"></div>
+                <div class="form-group"><input class="form-control" type="text" id="animaux" name="animaux" placeholder="Animaux pris en charge"></div>
                 <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Enregistrer</button></div>
             </form>
         </div>
