@@ -64,7 +64,7 @@
         </nav>
     </header>
     <!-- Start: Registration Form with Photo -->
-    <div class="register-photo">
+    <div id="form" class="register-photo">
         <!-- Start: Form Container -->
         <div class="text-capitalize form-container" style="padding-top: 9px;padding-right: 0px;">
             <!-- Start: Image -->
